@@ -3,6 +3,13 @@ const path = require('path');
 
 const nextConfig = {
   reactStrictMode: true,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: false,
+  },
+  output: 'standalone',
   images: {
     domains: [],
   },

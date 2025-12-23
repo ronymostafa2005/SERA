@@ -6,6 +6,8 @@ import Sidebar from "@/Components/Layout/Sidebar";
 import { useSidebar } from "@/Context/SidebarContext";
 import { toast } from "react-toastify";
 
+export const dynamic = 'force-dynamic';
+
 export default function BooksCheckoutPage() {
   const searchParams = useSearchParams();
   const { isOpen } = useSidebar();

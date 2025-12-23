@@ -4,6 +4,8 @@ import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getCurrentUser } from "@/utils/auth";
 
+export const dynamic = 'force-dynamic';
+
 const ALLOWED_EMAIL =
   typeof process !== "undefined"
     ? process.env.NEXT_PUBLIC_ADMIN_EMAIL?.toLowerCase() || "admin@example.com"
