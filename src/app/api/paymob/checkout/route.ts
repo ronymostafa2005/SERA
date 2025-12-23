@@ -14,6 +14,7 @@ type CheckoutBody = {
 };
 
 export async function POST(req: Request) {
+  // التحقق من وجود متغيرات البيئة (ضروري لـ Vercel)
   if (!PAYMOB_API_KEY || !PAYMOB_INTEGRATION_ID || !PAYMOB_IFRAME_ID) {
     return NextResponse.json(
       { error: "Paymob env vars are missing" },
@@ -23,9 +24,9 @@ export async function POST(req: Request) {
 
   try {
     const body: CheckoutBody = await req.json();
-    const amountCents = body.amountCents ?? 10000; // 100 EGP as default
+    const amountCents = body.amountCents ?? 10000; // 100 EGP كافتراضي
 
-    // 1) auth token
+    // 1) الحصول على Token المصادقة
     const authRes = await fetch("https://accept.paymob.com/api/auth/tokens", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -37,7 +38,7 @@ export async function POST(req: Request) {
     }
     const token = authData.token as string;
 
-    // 2) order
+    // 2) إنشاء الطلب (Order)
     const orderRes = await fetch("https://accept.paymob.com/api/ecommerce/orders", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -54,7 +55,7 @@ export async function POST(req: Request) {
       throw new Error("Failed to create Paymob order");
     }
 
-    // 3) payment key
+    // 3) الحصول على Payment Key
     const payKeyRes = await fetch("https://accept.paymob.com/api/acceptance/payment_keys", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -105,4 +106,3 @@ export async function POST(req: Request) {
     );
   }
 }
-
