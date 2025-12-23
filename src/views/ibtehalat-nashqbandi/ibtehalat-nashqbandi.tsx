@@ -20,7 +20,7 @@ export default function IbtehalatNashqbandi() {
       .then((data) => setIbtehalatData(data.data || []))
       .catch((err) => {
         console.error("Error fetching ibtehalat:", err);
-        toast.error("فشل جلب الإبتهالات");
+        toast.error("Failed to fetch ibtehalat");
         setIbtehalatData([]);
       })
       .finally(() => setLoading(false));

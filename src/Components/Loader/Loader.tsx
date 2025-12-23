@@ -8,7 +8,6 @@ export default function Loader() {
   const { isLoading } = useLoading();
   const [showVideo, setShowVideo] = useState(false);
 
-  // عند ظهور تحميل جدي
   useEffect(() => {
     if (!isLoading) return;
     setShowVideo(true);

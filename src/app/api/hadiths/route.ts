@@ -2,8 +2,6 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    // يمكن استخدام API خارجي للأحاديث مثل hadeethenc.com
-    // مثال: https://hadeethenc.com/api/v1/hadeeths/list/
     const response = await fetch("https://hadeethenc.com/api/v1/hadeeths/list/?language=ar&category_id=1&page=1&per_page=20", {
       method: "GET",
       headers: {

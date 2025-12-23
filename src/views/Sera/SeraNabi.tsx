@@ -25,7 +25,7 @@ export default function SeraNabi() {
       .then((data) => setBooks(data.data || []))
       .catch((err) => {
         console.error("Error fetching sera-nabi books:", err);
-        toast.error("فشل جلب كتب السيرة النبوية");
+        toast.error("Failed to fetch sera-nabi books");
         setBooks([]);
       })
       .finally(() => setLoading(false));

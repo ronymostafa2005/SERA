@@ -21,7 +21,6 @@ interface SidebarContextType {
 
 const SidebarContext = createContext<SidebarContextType | undefined>(undefined);
 
-// يمكن تغييرها من .env: NEXT_PUBLIC_API_URL=https://api3.islamhouse.com/v3/paV29H2gm56kvLPy/main/sitecontent/ar/ar/json
 const API_URL ="https://api3.islamhouse.com/v3/paV29H2gm56kvLPy/main/sitecontent/ar/ar/json";
 
 export function SidebarProvider({ children }: { children: ReactNode }) {
@@ -48,7 +47,6 @@ export function SidebarProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  // تحميل مرة واحدة عند فتح الصفحة
   useEffect(() => {
     refreshSections();
   }, [refreshSections]);

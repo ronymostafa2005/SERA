@@ -21,14 +21,12 @@ export default function Cards({ items, onPlayAudio, playingSurah }: CardsProps) 
           key={card.title} 
           className="rounded-2xl bg-gradient-to-br from-black/80 via-slate-900/80 to-black/80 p-6 text-white hover:from-black/90 hover:via-slate-900/90 hover:to-black/90 transition-all duration-300 border border-emerald-500/20 hover:border-emerald-400/40 relative overflow-hidden"
         >
-          {/* خلفية زخرفية */}
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/20 rounded-full blur-3xl"></div>
             <div className="absolute bottom-0 left-0 w-24 h-24 bg-emerald-400/20 rounded-full blur-2xl"></div>
           </div>
 
           <div className="relative z-10 flex flex-col items-center justify-center min-h-[280px]">
-            {/* بسم الله الرحمن الرحيم */}
             <div className="mb-6 text-center">
               <p className="text-2xl md:text-3xl font-bold text-emerald-400 mb-2 animate-bismillah">
                 بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
@@ -36,15 +34,12 @@ export default function Cards({ items, onPlayAudio, playingSurah }: CardsProps) 
               <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-emerald-400 to-transparent mx-auto animate-pulse"></div>
             </div>
 
-            {/* اسم السورة في المنتصف */}
             <h3 className="text-2xl md:text-3xl font-bold mb-4 text-center text-white drop-shadow-[0_0_10px_rgba(16,185,129,0.5)]">
               {card.title}
             </h3>
 
-            {/* معلومات إضافية */}
             <p className="text-sm text-gray-300 mb-6 text-center">{card.genre}</p>
 
-            {/* زر التشغيل */}
             {card.surahNo && onPlayAudio && (
               <button
                 onClick={() => onPlayAudio(card.surahNo!)}

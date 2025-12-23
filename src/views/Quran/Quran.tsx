@@ -74,7 +74,6 @@ export default function Quran() {
     setPagination(1);
   }, [selectedLanguage]);
 
-  // جلب القارئين
   useEffect(() => {
     fetch("https://quranapi.pages.dev/api/reciters.json")
       .then((res) => res.json())
@@ -90,7 +89,6 @@ export default function Quran() {
       });
   }, []);
 
-  // جلب السور
   useEffect(() => {
     let isMounted = true;
     
@@ -126,29 +124,23 @@ export default function Quran() {
     };
   }, [selectedLanguage, setGlobalLoading]);
 
-  // حساب البيانات للصفحة الحالية
   const totalPages = Math.ceil(allCardsData.length / itemsPerPage);
   const startIndex = (pagination - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const currentPageData = allCardsData.slice(startIndex, endIndex);
 
-  // تشغيل الصوت
   const handlePlayAudio = (surahNo: number) => {
-    // إيقاف الصوت الحالي إن وجد
     if (currentAudio) {
       currentAudio.pause();
       currentAudio.currentTime = 0;
     }
 
-    // البحث عن السورة
     const surah = allCardsData.find((card) => card.surahNo === surahNo);
     if (!surah || !surah.audio) return;
 
-    // الحصول على رابط الصوت للقارئ المختار
     const reciterAudio = surah.audio[selectedReciter];
     if (!reciterAudio) return;
 
-    // إنشاء audio element جديد
     const audio = new Audio(reciterAudio.url);
     audio.play();
 
@@ -161,7 +153,6 @@ export default function Quran() {
     setPlayingSurah(surahNo);
   };
 
-  // إيقاف الصوت
   const handleStopAudio = () => {
     if (currentAudio) {
       currentAudio.pause();
@@ -336,7 +327,6 @@ export default function Quran() {
           {/* Page Numbers */}
           <div className="flex gap-2">
             {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
-              // عرض الصفحات القريبة فقط
               if (
                 page === 1 ||
                 page === totalPages ||

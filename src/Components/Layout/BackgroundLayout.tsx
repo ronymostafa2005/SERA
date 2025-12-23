@@ -16,7 +16,6 @@ export default function BackgroundLayout() {
         }}
         priority
       />
-      {/* طبقة تظليل لضمان وضوح النص */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/60"></div>
     </div>
   );

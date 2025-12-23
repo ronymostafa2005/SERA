@@ -17,7 +17,6 @@ export default function AdminDashboard() {
   const [currentReview, setCurrentReview] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
-  // بيانات إحصائية (افتراضية مؤقتًا)
   const stats = useMemo(
     () => [
       { label: "الزيارات اليوم", value: "1.2K", sub: "زيادة 12%" },
@@ -89,7 +88,6 @@ export default function AdminDashboard() {
     setCurrentReview((prev) => (prev - 1 + reviews.length) % reviews.length);
   };
 
-  // تشغيل السلايدر تلقائياً كل 5 ثوانٍ
   useEffect(() => {
     const timer = setInterval(() => {
       handleNextReview();
@@ -97,7 +95,6 @@ export default function AdminDashboard() {
     return () => clearInterval(timer);
   }, [reviews.length]);
 
-  // إعادة ضبط حالة التحريك بعد الانتقال
   useEffect(() => {
     const timer = setTimeout(() => setIsAnimating(false), 400);
     return () => clearTimeout(timer);
@@ -161,7 +158,7 @@ export default function AdminDashboard() {
             <h2 className="text-xl font-semibold mb-4">مبيعات الكتب (آخر 12 شهر)</h2>
               <div className="flex items-end gap-3 h-96">
               {barData.map((bar) => {
-                  const heightPx = Math.max((bar.value / maxBarValue) * 320, 28); // أكبر وضوح للأعمدة
+                  const heightPx = Math.max((bar.value / maxBarValue) * 320, 28);
                 return (
                   <div key={bar.label} className="flex-1 flex flex-col items-center gap-2">
                     <div

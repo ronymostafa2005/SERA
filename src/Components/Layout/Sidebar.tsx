@@ -11,11 +11,9 @@ const NAV_ITEMS = [
   { path: "/dashboard", label: "الرئيسية" },
   { path: "/quran", label: "القرآن الكريم" },
   { path: "/hadiths", label: "الأحاديث النبوية" },
-  // { path: "/stories", label: "قصص الأنبياء" },
   { path: "/lectures", label: "محاضرات إسلامية" },
   { path: "/Nakshabanii", label: "ابتهالات النشقبندي" },
   { path: "/books-shop", label: "تسوق الكتب" },
-  // { path: "/duas", label: "أدعية وأذكار" },
   { path : "/sera-nabi" , label : "السيرة النبوية"} , 
   { path: "/profile", label: "الملف الشخصي" },
 ];
@@ -27,7 +25,7 @@ export default function Sidebar() {
   const [userName, setUserName] = useState("Rony Mostafa");
   const [avatar, setAvatar] = useState("/default-avatar.png");
   const { setLoading } = useLoading();
-// stop the loader when the pathname changes
+
   useEffect(() => {
     setLoading(false);
   }, [pathname, setLoading]);
@@ -53,19 +51,15 @@ export default function Sidebar() {
 
   return (
     <div className="flex">
-      {/* Sidebar desktop */}
       <div
         className={`hidden md:block fixed top-0 left-0 h-screen w-64 text-white transform ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-200 ease-in-out shadow-2xl z-50 overflow-hidden 
         bg-black/90 border-r border-emerald-700/50 rounded-r-3xl will-change-transform`}
       >
-        {/* خلفية متحركة بنفس ستايل الويلكم */}
         <div className="absolute inset-0 bg-gradient-to-b from-black via-slate-900 to-black background-animate opacity-90"></div>
 
-        {/* محتوى السايدبار */}
         <div className="p-6 relative h-full z-10 flex flex-col">
-          {/* البروفايل فوق */}
           <div className="flex items-center gap-3 mb-8">
             <div className="relative">
               <img
@@ -73,22 +67,18 @@ export default function Sidebar() {
                 alt="User Avatar"
                 className="w-10 h-10 rounded-full border border-emerald-400 object-cover shadow-md"
               />
-              {/* status dot */}
               <span className="absolute bottom-0 right-0 block w-3 h-3 bg-emerald-500 border-2 border-black rounded-full"></span>
             </div>
-            {/* Name + status text */}
             <div className="flex flex-col">
               <span className="font-semibold text-sm">{userName}</span>
               <span className="text-xs text-emerald-300">Online • متصلة</span>
             </div>
           </div>
 
-          {/* عنوان صغير */}
           <p className="text-xs text-gray-300 mb-4 tracking-wide">
             منصتك الإسلامية • Quran • Stories • Duas
           </p>
 
-          {/* اللينكات */}
           <ul className="space-y-3 flex-1">
             {NAV_ITEMS.map((item) => {
               const isActive = pathname === item.path;
@@ -117,14 +107,12 @@ export default function Sidebar() {
             })}
           </ul>
 
-          {/* نص صغير تحت */}
           <div className="mt-6 text-[10px] text-gray-400 text-center mb-4">
             <p className="animate-pulse">
               ﷽ · اجعل هذه المنصة بابًا للأجر المستمر
             </p>
           </div>
 
-          {/* زر تسجيل الخروج */}
           <button
             onClick={handleLogout}
             className="w-full px-4 py-3 bg-red-600/80 hover:bg-red-500 text-white font-semibold rounded-xl border border-red-400/50 transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_15px_rgba(239,68,68,0.6)] flex items-center justify-center gap-2"
@@ -147,7 +135,6 @@ export default function Sidebar() {
         </div>
       </div>
 
-      {/* زر الفتح/الإغلاق لسطح المكتب */}
       <button
         onClick={toggleSidebar}
         className={`
@@ -167,7 +154,6 @@ export default function Sidebar() {
         )}
       </button>
 
-      {/* موبايل: زر علوي ودروب داون */}
       <div className="md:hidden fixed top-0 left-0 right-0 z-50">
         <div className="flex items-center justify-between bg-black/80 backdrop-blur px-4 py-3 border-b border-emerald-600/50">
           <div className="flex items-center gap-3">

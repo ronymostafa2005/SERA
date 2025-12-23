@@ -13,7 +13,6 @@ function AppContent() {
   const { isLoading } = useLoading();
 
   useEffect(() => {
-    // محاكاة تحميل الموقع الأولي
     const timer = setTimeout(() => {
       setInitialLoading(false);
     }, 2000);

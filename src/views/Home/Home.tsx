@@ -43,7 +43,6 @@ const promoCards = [
   { path: "/profile", title: "الملف الشخصي", desc: "إدارة بياناتك وصورتك.", icon: "favorites" },
 ];
 
-// دالة لتحديد الأيقونة المناسبة لكل قسم
 const getSectionIcon = (blockName: string) => {
   const iconClass = "w-8 h-8 text-emerald-400";
   
@@ -87,17 +86,13 @@ export default function Home() {
     <>
       <Sidebar />
       <div className={`p-6 min-h-screen transition-all duration-500 ${isOpen ? "md:ml-64 ml-0" : "ml-0"} pt-20 md:pt-6`}>
-      {/* Header Section */}
       <div className="relative mb-12 text-center">
-        {/* Decorative Background Elements */}
         <div className="absolute inset-0 -z-10">
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-emerald-400/15 rounded-full blur-2xl animate-pulse delay-500"></div>
         </div>
 
-        {/* Main Title with Icons */}
         <div className="flex items-center justify-center gap-4 md:gap-6 mb-4 animate-fade-in-up">
-          {/* Islamic Icon - Crescent Moon */}
           <div className="relative animate-float">
             <svg
               className="w-12 h-12 md:w-16 md:h-16 text-emerald-400 drop-shadow-[0_0_20px_rgba(16,185,129,0.9)]"
@@ -122,12 +117,10 @@ export default function Home() {
             </svg>
           </div>
 
-          {/* Main Title */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-emerald-300 to-emerald-500 drop-shadow-[0_0_25px_rgba(16,185,129,0.5)]">
             منصة الإسلام الشاملة
           </h1>
 
-          {/* Islamic Icon - Quran */}
           <div className="relative animate-float-delayed">
             <svg
               className="w-12 h-12 md:w-16 md:h-16 text-emerald-400 drop-shadow-[0_0_20px_rgba(16,185,129,0.9)]"
@@ -147,19 +140,16 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Subtitle */}
         <p className="text-lg md:text-xl text-gray-300 mb-2 animate-fade-in delay-300">
           استكشف مكتبة شاملة من المحتوى الإسلامي الموثوق
         </p>
         
-        {/* Decorative Line */}
         <div className="flex items-center justify-center gap-4 mt-6 animate-fade-in delay-500">
           <div className="w-16 h-0.5 bg-gradient-to-r from-transparent to-emerald-400"></div>
           <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
           <div className="w-16 h-0.5 bg-gradient-to-l from-transparent to-emerald-400"></div>
         </div>
 
-        {/* Stats or Description */}
         <div className="mt-8 flex flex-wrap items-center justify-center gap-6 md:gap-8 text-sm md:text-base">
           <div className="flex items-center gap-2 text-emerald-400">
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -183,7 +173,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* روابط المنصة */}
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-3xl font-bold text-emerald-400 drop-shadow-[0_0_20px_rgba(16,185,129,0.9)]">روابط المنصة</h2>
         <button

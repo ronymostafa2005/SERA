@@ -8,10 +8,9 @@ type AuthUser = {
   paymentUrl: string;
 };
 
-// جلب بيانات المستخدم: نطلب إرسالها عبر POST
 export async function GET() {
   return NextResponse.json(
-    { message: "استخدم POST لإرسال بيانات المستخدم (name, email, avatar)" },
+    { message: "Use POST to send user data (name, email, avatar)" },
     {
       status: 400,
       headers: {
@@ -22,13 +21,12 @@ export async function GET() {
   );
 }
 
-// تسجيل (اختباري) مع إرجاع بيانات المستخدم + رابط الدفع
 export async function POST(req: Request) {
   try {
     const body = await req.json();
     if (!body?.name || !body?.email) {
       return NextResponse.json(
-        { error: "الاسم والبريد الإلكتروني مطلوبان" },
+        { error: "Name and email are required" },
         {
           status: 400,
           headers: {

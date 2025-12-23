@@ -41,7 +41,6 @@ function CheckoutContent() {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
-    // هنا يتم إرسال البيانات للباك إند/بوابة الدفع
     toast.success("تم استلام الطلب، سنقوم بالتواصل معك لإتمام الدفع");
   };
 

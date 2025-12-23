@@ -2,8 +2,6 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    // يمكن استخدام API خارجي للقرآن مثل api.alquran.cloud
-    // مثال: https://api.alquran.cloud/v1/quran/quran-uthmani
     const response = await fetch("https://api.alquran.cloud/v1/surah", {
       method: "GET",
       headers: {

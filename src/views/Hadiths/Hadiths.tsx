@@ -16,7 +16,6 @@ import {
 } from "@heroicons/react/24/solid";
 import Pagination from "@/Components/componentsUI/Pagination";
 
-// دالة لتحديد الأيقونة المناسبة لكل فئة
 const getCategoryIcon = (title: string) => {
     const titleLower = title.toLowerCase();
     
@@ -45,15 +44,11 @@ const getCategoryIcon = (title: string) => {
         return <AcademicCapIcon className="w-8 h-8" />;
     }
     
-    // الأيقونة الافتراضية
     return <BookOpenIcon className="w-8 h-8" />;
 };
 
-//================================================
 export default function Hadiths() {
-    // context for sidebar and sidebar component
     const { isOpen } = useSidebar();
-    // state for the hadiths
     const [languages, setLanguages] = useState<Hadith["language"][]>([]);
     const [selectlanguage, setSelectlanguage] = useState<string>("ar");
     const [categories, setCategories] = useState<Hadith["category"][]>([]);
@@ -64,11 +59,9 @@ export default function Hadiths() {
     const [totalPages, setTotalPages] = useState<number>(1);
     const [selectedHadeeth, setSelectedHadeeth] = useState<Hadith["details"] | null>(null);
 
-    //---- fetch data from the api ---//
     useEffect(() => {
         async function fetchLanguages() {
             try {
-                // محاولة جلب البيانات من API
                 const res = await fetch("/api/languages");
 
                 if (res.ok) {
@@ -80,7 +73,6 @@ export default function Hadiths() {
                     }
                 }
                 
-                // Fallback: استخدام بيانات ثابتة
                 const fallbackLanguages: Hadith["language"][] = [
                     { code: "ar", native: "العربية" },
                     { code: "en", native: "English" },
@@ -98,7 +90,6 @@ export default function Hadiths() {
                 console.log("Using fallback languages");
             } catch (error) {
                 console.error("Error fetching languages:", error);
-                // استخدام بيانات ثابتة في حالة الخطأ
                 const fallbackLanguages: Hadith["language"][] = [
                     { code: "ar", native: "العربية" },
                     { code: "en", native: "English" },
@@ -110,7 +101,7 @@ export default function Hadiths() {
 
         fetchLanguages();
     }, []);
-    // ======= useEffect for changing the language =======//
+
     useEffect(() => {
         if (!selectlanguage) return;
         async function fetchcategories() {
@@ -136,7 +127,6 @@ export default function Hadiths() {
         fetchcategories();
     }, [selectlanguage]);
 
-    // ------------ useEffect for fetching the hadiths ------------//
 
     useEffect(() => {
         if (!selectedCategory || !selectlanguage) return;
@@ -164,7 +154,6 @@ export default function Hadiths() {
         }
         fetchhadiths();
     }, [selectedCategory, selectlanguage, currentPage]);
-    // ====== handle the hadith details ------------//
 
     async function fetchHadeethDetails(hadeethId: string) {
         setloading(true);
@@ -187,7 +176,7 @@ export default function Hadiths() {
             setloading(false);
         }
     }
-    // -----------hundle the pagination ------------//
+
     const handlepagechange = (page: number) => {
         setCurrentPage(page);
     }
@@ -198,7 +187,6 @@ export default function Hadiths() {
             <Sidebar />
 
             <div className={`p-6 min-h-screen transition-all duration-500 ${isOpen ? "md:ml-64 ml-0" : "ml-0"} pt-20 md:pt-6`}>
-                {/* العنوان الرئيسي */}
                 <div className="relative mb-8 text-center">
                     <div className="absolute inset-0 -z-10">
                         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse"></div>
@@ -210,7 +198,6 @@ export default function Hadiths() {
                     <p className="text-lg text-gray-300">استكشف الأحاديث النبوية الشريفة</p>
                 </div>
 
-                {/* اختيار اللغة */}
                 <div className="mb-6 max-w-md mx-auto">
                     <label className="block text-white mb-2 text-sm font-semibold">اختر اللغة:</label>
                     <select
@@ -229,7 +216,6 @@ export default function Hadiths() {
                     </select>
                 </div>
 
-                {/* حالة التحميل */}
                 {loading && (
                     <div className="text-center py-12">
                         <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-emerald-400"></div>
@@ -237,7 +223,6 @@ export default function Hadiths() {
                     </div>
                 )}
 
-                {/* عرض الفئات */}
                 {!loading && categories.length > 0 && (
                     <div className="mb-8">
                         <h2 className="text-2xl font-bold text-white mb-6 text-center">الفئات</h2>
@@ -270,7 +255,6 @@ export default function Hadiths() {
                     </div>
                 )}
 
-                {/* عرض الأحاديث */}
                 {!loading && selectedCategory && hadiths.length > 0 && (
                     <div className="mb-8">
                         <h2 className="text-2xl font-bold text-white mb-6 text-center">الأحاديث</h2>
@@ -298,12 +282,10 @@ export default function Hadiths() {
                                 </div>
                             ))}
                         </div>
-                        {/* Pagination */}
                         <Pagination totalPages={totalPages} currentPage={currentPage} handlepagechange={handlepagechange} />
                     </div>
                 )}
 
-                {/* رسائل فارغة */}
                 {!loading && categories.length === 0 && (
                     <div className="text-center py-12">
                         <p className="text-gray-400 text-lg">لا توجد فئات متاحة</p>
@@ -316,7 +298,6 @@ export default function Hadiths() {
                     </div>
                 )}
 
-                {/* Modal لعرض تفاصيل الحديث */}
                 {selectedHadeeth && (
                     <div
                         className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4"
@@ -338,7 +319,6 @@ export default function Hadiths() {
                             </div>
 
                             <div className="space-y-6">
-                                {/* العنوان */}
                                 {selectedHadeeth.title && (
                                     <div>
                                         <h3 className="text-emerald-400 font-semibold mb-2">العنوان:</h3>
@@ -346,7 +326,6 @@ export default function Hadiths() {
                                     </div>
                                 )}
 
-                                {/* الحديث */}
                                 {selectedHadeeth.hadeeth && (
                                     <div>
                                         <h3 className="text-emerald-400 font-semibold mb-2">الحديث:</h3>
@@ -354,7 +333,6 @@ export default function Hadiths() {
                                     </div>
                                 )}
 
-                                {/* الحديث بالعربية */}
                                 {selectedHadeeth.hadeeth_ar && (
                                     <div>
                                         <h3 className="text-emerald-400 font-semibold mb-2">الحديث بالعربية:</h3>
@@ -364,7 +342,6 @@ export default function Hadiths() {
                                     </div>
                                 )}
 
-                                {/* المصدر */}
                                 {selectedHadeeth.attribution && (
                                     <div>
                                         <h3 className="text-emerald-400 font-semibold mb-2">المصدر:</h3>
@@ -372,7 +349,6 @@ export default function Hadiths() {
                                     </div>
                                 )}
 
-                                {/* الدرجة */}
                                 {selectedHadeeth.grade && (
                                     <div>
                                         <h3 className="text-emerald-400 font-semibold mb-2">الدرجة:</h3>
@@ -382,7 +358,6 @@ export default function Hadiths() {
                                     </div>
                                 )}
 
-                                {/* الشرح */}
                                 {selectedHadeeth.explanation && (
                                     <div>
                                         <h3 className="text-emerald-400 font-semibold mb-2">الشرح:</h3>
@@ -390,7 +365,6 @@ export default function Hadiths() {
                                     </div>
                                 )}
 
-                                {/* الشرح بالعربية */}
                                 {selectedHadeeth.explanation_ar && (
                                     <div>
                                         <h3 className="text-emerald-400 font-semibold mb-2">الشرح بالعربية:</h3>
@@ -400,7 +374,6 @@ export default function Hadiths() {
                                     </div>
                                 )}
 
-                                {/* الإشارات */}
                                 {selectedHadeeth.hints && selectedHadeeth.hints.length > 0 && (
                                     <div>
                                         <h3 className="text-emerald-400 font-semibold mb-2">الإشارات:</h3>
