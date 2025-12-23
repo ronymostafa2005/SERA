@@ -1,0 +1,262 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------- */
+/* 🌟 ثيم الألوان والأنيميشن الأساسي للموقع 🌟 */
+/* ------------------------------------------- */
+
+/* 1. ضبط خلفية الصفحة الرئيسية (Body) */
+/* الخلفية يتم تطبيقها من App.tsx */
+body {
+    color: #f5f5f5; /* لون النص الأساسي */
+    min-height: 100vh;
+    position: relative;
+}
+
+/* 2. إضافة وميض خفيف على الخلفية */
+/* نستخدم عنصر وهمي (::before) لتطبيق الأنيميشن دون التأثير على المحتوى */
+body::before {
+    content: "";
+    position: fixed; /* لتغطية الصفحة بالكامل */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* خلفية شفافة مع وميض خفيف */
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 1%, transparent 70%);
+    opacity: 0.3; /* خفيفة لتكون خلفية ناعمة */
+    pointer-events: none; /* للسماح بالتفاعل مع العناصر أسفل هذا الوميض */
+    animation: silver-shimmer 20s ease-in-out infinite alternate; /* تطبيق الأنيميشن */
+    z-index: -2; /* وضعه خلف طبقة التظليل */
+}
+
+/* @keyframes لوميض سيلفر (Silver Shimmer) */
+@keyframes silver-shimmer {
+    0% {
+        transform: scale(1) translate(0%, 0%);
+        opacity: 0.1;
+    }
+    50% {
+        /* تكبير وتحريك خفيف للخلفية لإعطاء إحساس بالوميض المنتشر */
+        transform: scale(1.2) translate(-5%, 5%); 
+        opacity: 0.2;
+    }
+    100% {
+        transform: scale(1) translate(0%, 0%);
+        opacity: 0.1;
+    }
+}
+
+
+/* ------------------------------------------- */
+/*  (Sidebar Animation) */
+/* ------------------------------------------- */
+
+.background-animate {
+    background-size: 300% 300%; 
+    animation: gradient-shift 15s ease infinite; 
+}
+
+@keyframes gradient-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%; 
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+
+
+/* في ملف CSS الخاص بك (مثل index.css) */
+
+/* ... (باقي الكود السابق الخاص بالـ Sidebar والـ body) ... */
+
+/* ------------------------------------------- */
+/* 🌟 أنيميشن خلفية صفحة الترحيب (Welcome Page Background Animation) 🌟 */
+/* ------------------------------------------- */
+
+/* أنيميشن لتحريك وتكبير الخلفية ببطء */
+@keyframes background-pan {
+  0% {
+    background-position: 0% 0%;
+    transform: scale(1);
+  }
+  50% {
+    background-position: 100% 100%; /* تحريك الخلفية */
+    transform: scale(1.1); /* تكبير خفيف */
+  }
+  100% {
+    background-position: 0% 0%;
+    transform: scale(1);
+  }
+}
+
+/* تطبيق الأنيميشن على الطبقة الوهمية */
+.animate-background-pan {
+  animation: background-pan 30s ease-in-out infinite alternate; /* حركة بطيئة وتناوبية */
+}
+
+/* ------------------------------------------- */
+/* 🌟 أنيميشن دخول عناصر صفحة الترحيب 🌟 */
+/* ------------------------------------------- */
+
+/* أنيميشن لتلاشي العنصر وظهوره من الأسفل */
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* أنيميشن لتلاشي العنصر وظهوره ببساطة */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+/* تطبيق الأنيميشن */
+.animate-fade-in-up {
+  animation: fade-in-up 1s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out forwards;
+}
+
+/* لتأخير ظهور بعض العناصر */
+.delay-500 {
+  animation-delay: 0.5s;
+}
+.delay-1000 {
+  animation-delay: 1s;
+}
+
+
+
+
+/* ------------------------------------------- */
+/*(Wiggle/Shake)  */
+/* ------------------------------------------- */
+
+/* تعريف حركة التمايل: تدوير خفيف ذهاباً وإياباً */
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(0deg); /* البداية والنهاية: لا دوران */
+  }
+  25% {
+    transform: rotate(-3deg); /* ميلان لليسار */
+  }
+  75% {
+    transform: rotate(3deg); /* ميلان لليمين */
+  }
+}
+
+/* الكلاس المخصص الذي سنستخدمه عند Hover */
+.animate-wiggle {
+  animation: wiggle 0.5s ease-in-out infinite; 
+}
+
+/* ------------------------------------------- */
+/* 🌟 أنيميشن الأيقونات الإسلامية 🌟 */
+/* ------------------------------------------- */
+
+/* أنيميشن للطفو (Float) للأيقونات */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-15px) rotate(5deg);
+    opacity: 0.9;
+  }
+}
+
+/* أنيميشن للطفو مع تأخير */
+@keyframes float-delayed {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-15px) rotate(-5deg);
+    opacity: 0.9;
+  }
+}
+
+/* تطبيق الأنيميشن */
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 3s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+
+/* ------------------------------------------- */
+/* 🌟 أنيميشن بسم الله الرحمن الرحيم 🌟 */
+/* ------------------------------------------- */
+
+@keyframes bismillah {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.02);
+    text-shadow: 0 0 20px rgba(16, 185, 129, 0.8), 0 0 30px rgba(16, 185, 129, 0.4);
+  }
+}
+
+.animate-bismillah {
+  animation: bismillah 3s ease-in-out infinite;
+}
+
+/* ------------------------------------------- */
+/* 🌟 أنيميشن الدائرة المتحركة حول الـ Loader 🌟 */
+/* ------------------------------------------- */
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 3s linear infinite;
+}
+
+.animate-spin-reverse {
+  animation: spin-reverse 2s linear infinite;
+}
+
