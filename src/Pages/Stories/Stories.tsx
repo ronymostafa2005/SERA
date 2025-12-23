@@ -1,25 +1,17 @@
 "use client";
 
-import Cards from "../../Components/Cards/Cards";
 import { useSidebar } from "../../Context/SidebarContext";
 import Sidebar from "../../Components/Layout/Sidebar";
 
 export default function Stories() {
   const { isOpen } = useSidebar();
-  const cardsData: never[] = [];
 
   return (
     <>
       <Sidebar />
-      <div className={`p-6 min-h-screen transition-all duration-500 ${isOpen ? "ml-64" : "ml-0"}`}>
-        <h1 className="text-3xl font-bold text-white mb-6">قصص الأنبياء</h1>
-        {cardsData.length === 0 ? (
-          <div className="text-center py-12">
-            <p className="text-gray-400 text-lg">لا توجد قصص متاحة</p>
-          </div>
-        ) : (
-          <Cards items={cardsData} />
-        )}
+      <div className={`p-6 min-h-screen transition-all duration-500 ${isOpen ? "md:ml-64 ml-0" : "ml-0"} pt-20 md:pt-6 text-white`}>
+        <h1 className="text-3xl font-bold mb-6">قصص الأنبياء</h1>
+        <p className="text-gray-300">قريباً: قصص الأنبياء والمرسلين</p>
       </div>
     </>
   );

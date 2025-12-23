@@ -13,7 +13,7 @@ export default function Signup() {
     name: "",
     email: "",
     password: "",
-    avatar: "/default-avatar.png", 
+    avatar: "/default-avatar.png",
   });
   const [error, setError] = useState("");
   const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
@@ -34,7 +34,6 @@ export default function Signup() {
     e.preventDefault();
     setError("");
 
-    // التحقق من البيانات
     if (!formData.name || !formData.email || !formData.password) {
       setError("يرجى ملء جميع الحقول");
       return;
@@ -45,13 +44,11 @@ export default function Signup() {
       return;
     }
 
-    // التحقق من وجود البريد الإلكتروني
     if (emailExists(formData.email)) {
       setError("هذا البريد الإلكتروني مستخدم بالفعل");
       return;
     }
 
-    // نطلب إنشاء المستخدم عبر الـ API (للحصول على أي رد/تكامل لاحق)
     fetch("/api/auth", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -60,19 +57,14 @@ export default function Signup() {
         email: formData.email,
         avatar: formData.avatar || "/default-avatar.png",
       }),
-    }).catch(() => {
-      // يمكن تجاهل الفشل هنا لأننا نخزن محلياً أيضاً
-    });
+    }).catch(() => {});
 
-    // حفظ المستخدم محلياً (بما في ذلك الصورة)
     saveUser(formData);
-    // حفظ المستخدم الحالي
     localStorage.setItem("currentUser", JSON.stringify(formData));
 
     toast.success("تم إنشاء حسابك بنجاح، أهلاً بك ✨");
     playGreetingAudio();
 
-    // الانتقال إلى صفحة Dashboard
     router.push("/dashboard");
   };
 
@@ -97,7 +89,6 @@ export default function Signup() {
 
   return (
     <div className="relative flex items-center justify-center h-screen overflow-hidden text-white">
-      {/* الخلفية مع الصورة */}
       <div className="absolute inset-0">
         <Image
           src={backgroundImage}
@@ -110,10 +101,8 @@ export default function Signup() {
         />
       </div>
 
-      {/* طبقة تظليل */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/75 via-black/65 to-black/75"></div>
 
-      {/* محتوى الصفحة */}
       <div className="relative z-10 flex flex-col items-center text-center px-6">
         <h1 className="text-4xl md:text-6xl font-extrabold text-emerald-400 mb-6 animate-fade-in-up drop-shadow-[0_0_20px_rgba(16,185,129,0.9)]">
           سجل حسابك الآن ✨
@@ -123,7 +112,6 @@ export default function Signup() {
           انضم لمنصتنا الإسلامية واستمتع بالقرآن الكريم، قصص الأنبياء، محاضرات وأدعية
         </p>
 
-        {/* نموذج التسجيل */}
         <form onSubmit={handleSubmit} className="bg-black/70 p-8 rounded-2xl shadow-lg w-full max-w-md flex flex-col gap-4 animate-fade-in delay-700">
           {error && (
             <div className="bg-red-500/20 border border-red-500 text-red-300 px-4 py-2 rounded-lg text-sm">
@@ -184,7 +172,6 @@ export default function Signup() {
           </button>
         </form>
 
-        {/* نص صغير */}
         <p className="mt-6 text-sm text-gray-300 animate-pulse">
           بانضمامك للمنصة، تحصل على محتوى إسلامي موثوق وجذاب دائمًا ✨
         </p>
@@ -192,3 +179,4 @@ export default function Signup() {
     </div>
   );
 }
+

@@ -41,11 +41,11 @@ export default function Lectures() {
   return (
     <>
       <Sidebar />
-          <div
-            className={`p-6 min-h-screen transition-all duration-500 ${
-              isOpen ? "md:ml-64 ml-0" : "ml-0"
-            } pt-20 md:pt-8`}
-          >
+      <div
+        className={`p-6 min-h-screen transition-all duration-500 ${
+          isOpen ? "md:ml-64 ml-0" : "ml-0"
+        } pt-20 md:pt-8`}
+      >
         <h1 className="text-3xl font-bold text-white mb-6">محاضرات إسلامية</h1>
 
         {loading && <p className="text-emerald-200">جارِ التحميل...</p>}
@@ -102,3 +102,4 @@ export default function Lectures() {
     </>
   );
 }
+

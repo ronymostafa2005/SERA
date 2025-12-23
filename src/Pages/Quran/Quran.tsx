@@ -173,7 +173,7 @@ export default function Quran() {
  
   if (loading) {
     return (
-      <div className={`flex items-center justify-center h-screen transition-all duration-500 ${isOpen ? "ml-64" : "ml-0"}`}>
+      <div className={`flex items-center justify-center h-screen transition-all duration-500 ${isOpen ? "md:ml-64 ml-0" : "ml-0"} pt-20 md:pt-6`}>
         <p className="text-white text-xl animate-pulse">جاري التحميل...</p>
       </div>
     );
@@ -182,7 +182,7 @@ export default function Quran() {
   return (
     <>
       <Sidebar />
-    <div className={`p-6 min-h-screen transition-all duration-500 ${isOpen ? "ml-64" : "ml-0"}`}>
+    <div className={`p-6 min-h-screen transition-all duration-500 ${isOpen ? "md:ml-64 ml-0" : "ml-0"} pt-20 md:pt-6`}>
       <div className="flex items-center justify-between mb-6 flex-wrap gap-4">
         <h1 className="text-3xl font-bold text-white">القرآن الكريم</h1>
         

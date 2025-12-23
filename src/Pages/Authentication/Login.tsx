@@ -34,23 +34,19 @@ export default function Login() {
     e.preventDefault();
     setError("");
 
-    // التحقق من البيانات
     if (!formData.email || !formData.password) {
       setError("يرجى ملء جميع الحقول");
       return;
     }
 
-    // التحقق من بيانات المستخدم
     const user = verifyUser(formData.email, formData.password);
     if (user) {
       toast.success("مرحبًا بعودتك! تسجيل دخول ناجح ✨");
       playGreetingAudio();
       const userEmail = user.email?.toLowerCase();
       if (userEmail === allowedDashboardEmail) {
-        // حساب مخول لصفحة إحصائيات المالك
         router.push("/admin-dashboard");
       } else {
-        // نجاح تسجيل الدخول لكن ليس حساب المالك
         router.push("/");
       }
     } else {
@@ -67,7 +63,6 @@ export default function Login() {
 
   return (
     <div className="relative flex items-center justify-center h-screen overflow-hidden text-white">
-      {/* الخلفية مع الصورة */}
       <div className="absolute inset-0">
         <Image
           src={backgroundImage}
@@ -80,10 +75,8 @@ export default function Login() {
         />
       </div>
 
-      {/* طبقة تظليل */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/75 via-black/65 to-black/75"></div>
 
-      {/* محتوى الصفحة */}
       <div className="relative z-10 flex flex-col items-center text-center px-6">
         <h1 className="text-4xl md:text-6xl font-extrabold text-emerald-400 mb-6 animate-fade-in-up drop-shadow-[0_0_20px_rgba(16,185,129,0.9)]">
           تسجيل الدخول ✨
@@ -93,7 +86,6 @@ export default function Login() {
           مرحبًا بعودتك! سجل دخولك للوصول إلى محتواك الإسلامي
         </p>
 
-        {/* نموذج تسجيل الدخول */}
         <form onSubmit={handleSubmit} className="bg-black/70 p-8 rounded-2xl shadow-lg w-full max-w-md flex flex-col gap-4 animate-fade-in delay-700">
           {error && (
             <div className="bg-red-500/20 border border-red-500 text-red-300 px-4 py-2 rounded-lg text-sm">
@@ -140,7 +132,6 @@ export default function Login() {
           </p>
         </form>
 
-        {/* نص صغير */}
         <p className="mt-6 text-sm text-gray-300 animate-pulse">
           استمتع بمحتوى إسلامي موثوق وجذاب دائمًا ✨
         </p>
@@ -148,3 +139,5 @@ export default function Login() {
     </div>
   );
 }
+
+

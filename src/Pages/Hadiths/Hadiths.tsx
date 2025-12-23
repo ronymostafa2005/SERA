@@ -197,7 +197,7 @@ export default function Hadiths() {
         <>
             <Sidebar />
 
-            <div className={`p-6 min-h-screen transition-all duration-500 ${isOpen ? "ml-64" : "ml-0"}`}>
+            <div className={`p-6 min-h-screen transition-all duration-500 ${isOpen ? "md:ml-64 ml-0" : "ml-0"} pt-20 md:pt-6`}>
                 {/* العنوان الرئيسي */}
                 <div className="relative mb-8 text-center">
                     <div className="absolute inset-0 -z-10">

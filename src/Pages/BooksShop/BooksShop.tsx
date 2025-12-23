@@ -27,7 +27,6 @@ export default function BooksShop() {
   const [totalPages, setTotalPages] = useState(1);
   const router = useRouter();
 
-  // اختَر عنصر الكتب من استجابة الأقسام
   const booksSection = useMemo(
     () => sections.find((section) => section.block_name?.toLowerCase() === "books"),
     [sections]
@@ -35,7 +34,6 @@ export default function BooksShop() {
 
   const booksEndpoint = booksSection?.api_url || FALLBACK_BOOKS_URL;
 
-  // 
   const fetchBooks = useCallback(async () => {
     if (!booksEndpoint) return;
     setBooksLoading(true);
@@ -52,14 +50,14 @@ export default function BooksShop() {
       setBooksLoading(false);
     }
   }, [booksEndpoint]);
-// button for go to checkout page
+
   const goToCheckout = async (book: BookItem) => {
     try {
       const res = await fetch("/api/paymob/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          amountCents: 10000, // 100 EGP افتراضي
+          amountCents: 10000,
           title: book.title,
           firstName: "Guest",
           lastName: "User",
@@ -73,7 +71,6 @@ export default function BooksShop() {
         throw new Error(msg);
       }
       if (data?.iframeUrl) {
-        // فتح بوابة الدفع في نفس الصفحة
         window.location.href = data.iframeUrl;
       } else {
         throw new Error("No iframe url");
@@ -185,4 +182,5 @@ export default function BooksShop() {
     </>
   );
 }
+
 
