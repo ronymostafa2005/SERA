@@ -1,4 +1,4 @@
-import Quran from "../../Pages/Quran/Quran";
+import Quran from "../../views/Quran/Quran";
 
 export const dynamic = 'force-dynamic';
 

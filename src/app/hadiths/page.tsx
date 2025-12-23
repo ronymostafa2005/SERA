@@ -1,4 +1,4 @@
-import Hadiths from "../../Pages/Hadiths/Hadiths";
+import Hadiths from "../../views/Hadiths/Hadiths";
 
 export const dynamic = 'force-dynamic';
 

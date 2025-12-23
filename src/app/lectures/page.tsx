@@ -1,4 +1,4 @@
-import Lectures from "../../Pages/Lectures/Lectures";
+import Lectures from "../../views/Lectures/Lectures";
 
 export const dynamic = 'force-dynamic';
 

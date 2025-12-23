@@ -1,4 +1,4 @@
-import IbtehalatNashqbandi from "@/Pages/ibtehalat-nashqbandi/ibtehalat-nashqbandi";
+import IbtehalatNashqbandi from "@/views/ibtehalat-nashqbandi/ibtehalat-nashqbandi";
 
 export const dynamic = 'force-dynamic';
 

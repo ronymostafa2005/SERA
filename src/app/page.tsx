@@ -1,4 +1,4 @@
-import Welcome from "../Pages/Authentication/Welcome";
+import Welcome from "../views/Authentication/Welcome";
 
 export default function HomePage() {
   return <Welcome />;

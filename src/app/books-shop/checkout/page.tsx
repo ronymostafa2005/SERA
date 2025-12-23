@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, type FormEvent, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Sidebar from "@/Components/Layout/Sidebar";
 import { useSidebar } from "@/Context/SidebarContext";
@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 
 export const dynamic = 'force-dynamic';
 
-export default function BooksCheckoutPage() {
+function CheckoutContent() {
   const searchParams = useSearchParams();
   const { isOpen } = useSidebar();
 
@@ -126,6 +126,14 @@ export default function BooksCheckoutPage() {
         </div>
       </div>
     </>
+  );
+}
+
+export default function BooksCheckoutPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-black flex items-center justify-center text-emerald-400">جاري التحميل...</div>}>
+      <CheckoutContent />
+    </Suspense>
   );
 }
 

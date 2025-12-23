@@ -1,4 +1,4 @@
-import BooksShop from "../../Pages/BooksShop/BooksShop";
+import BooksShop from "../../views/BooksShop/BooksShop";
 
 export const dynamic = 'force-dynamic';
 export const dynamicParams = false;

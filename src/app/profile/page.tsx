@@ -1,4 +1,4 @@
-import Profile from "../../Pages/Profile/Profile";
+import Profile from "../../views/Profile/Profile";
 
 export const dynamic = 'force-dynamic';
 

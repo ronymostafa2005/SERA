@@ -1,4 +1,4 @@
-import SeraNabi from "@/Pages/Sera/SeraNabi";
+import SeraNabi from "@/views/Sera/SeraNabi";
 
 export const dynamic = 'force-dynamic';
 
