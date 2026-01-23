@@ -208,3 +208,12 @@ body::before {
   animation: spin-reverse 2s linear infinite;
 }
 
+/* منع تغيير حجم الأيقونات أثناء التحميل */
+svg[data-icon] {
+  width: 1em !important;
+  height: 1em !important;
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+

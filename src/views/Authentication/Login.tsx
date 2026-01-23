@@ -30,7 +30,9 @@ export default function Login() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement>
+  ) => {
     e.preventDefault();
     setError("");
 
@@ -39,17 +41,37 @@ export default function Login() {
       return;
     }
 
-    const user = verifyUser(formData.email, formData.password);
-    if (user) {
+    try {
+      const payload = new FormData();
+      payload.append("email", formData.email);
+      payload.append("password", formData.password);
+
+      const res = await fetch("/api/auth/login", { method: "POST", body: payload });
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error || "البريد الإلكتروني أو كلمة المرور غير صحيحة");
+        return;
+      }
+
+      if (typeof window !== "undefined") {
+        try {
+          localStorage.setItem("currentUser", JSON.stringify(data.user));
+        } catch {
+          // ignore storage errors
+        }
+      }
+
       toast.success("مرحبًا بعودتك! تسجيل دخول ناجح ✨");
       playGreetingAudio();
-      const userEmail = user.email?.toLowerCase();
+      const userEmail = (data.user?.email as string | undefined)?.toLowerCase();
       if (userEmail === allowedDashboardEmail) {
         router.push("/admin-dashboard");
       } else {
-        router.push("/");
+        router.push("/dashboard");
       }
-    } else {
+    } catch (err) {
+      console.error(err);
       setError("البريد الإلكتروني أو كلمة المرور غير صحيحة");
     }
   };

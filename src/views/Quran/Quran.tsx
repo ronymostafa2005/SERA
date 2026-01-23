@@ -57,6 +57,36 @@ type Reciter = {
   name: string;
 };
 
+const createCover = (title: string) => {
+  const safeTitle = title.replace(/"/g, "'");
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+      <defs>
+        <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#0f172a"/>
+          <stop offset="50%" stop-color="#0b3b31"/>
+          <stop offset="100%" stop-color="#0f172a"/>
+        </linearGradient>
+        <radialGradient id="r" cx="70%" cy="25%" r="60%">
+          <stop offset="0%" stop-color="#34d399" stop-opacity="0.8"/>
+          <stop offset="60%" stop-color="#34d399" stop-opacity="0.08"/>
+          <stop offset="100%" stop-color="#34d399" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <rect width="1200" height="800" fill="url(#g)"/>
+      <rect width="1200" height="800" fill="url(#r)"/>
+      <rect x="60" y="60" width="1080" height="680" rx="36" fill="none" stroke="#34d399" stroke-width="6" opacity="0.55"/>
+      <text x="600" y="420" text-anchor="middle" fill="#d1fae5" font-family="Traditional Arabic, 'Scheherazade New', serif" font-size="70" font-weight="600">
+        ${safeTitle}
+      </text>
+      <text x="600" y="500" text-anchor="middle" fill="#a7f3d0" font-family="Cairo, 'Segoe UI', sans-serif" font-size="28" font-weight="600" letter-spacing="2">
+        سورة
+      </text>
+    </svg>
+  `;
+  return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+};
+
 export default function Quran() {
   const { setLoading: setGlobalLoading } = useLoading();
   const { isOpen } = useSidebar();
@@ -100,7 +130,7 @@ export default function Quran() {
         if (isMounted) {
           const mapped = data.map((surah) => ({
             title: surah.surahNameArabicLong,
-            imageUrl: "",
+            imageUrl: createCover(surah.surahNameArabicLong),
             rating: "5.0",
             genre: "تلاوة قرآنية",
             surahNo: surah.surahNo,

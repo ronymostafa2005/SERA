@@ -4,6 +4,7 @@ import { SidebarProvider } from "../Context/SidebarContext";
 import Loader from "../Components/Loader/Loader";
 import BackgroundLayout from "../Components/Layout/BackgroundLayout";
 import Footer from "../Components/Layout/Footer";
+import ChatWidget from "../Components/ChatWidget";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../app/globals.css";
@@ -26,6 +27,7 @@ export default function RootLayout({
             <BackgroundLayout />
             <Loader />
             {children}
+            <ChatWidget />
             <ToastContainer position="top-center" rtl />
             <Footer />
           </SidebarProvider>

@@ -8,33 +8,36 @@ type Book = {
 
 const cover = "/Books/cover.jpg"; 
 const cover2 ="/Books/cover2.jpg"; 
-
+const coverSiraAkram ="/Books/cover-akram-sira.svg";
+const coverShamailAkram ="/Books/cover-akram-shamail.svg";
 const books: Book[] = [
+ 
   {
-    title: "السيرة النبوية لابن هشام - الجزء الأول",
-    image: cover,
-    book_url: "/Books/%D8%A7%D9%84%D8%B3%D9%8A%D8%B1%D8%A9%20%D8%A7%D9%84%D9%86%D8%A8%D9%88%D9%8A%D8%A9%20%D9%84%D8%A7%D8%A8%D9%86%20%D9%87%D8%B4%D8%A7%D9%85%20%D8%AC1%20pdf%20(arab-books.com).pdf",
+    title: "السيرة النبوية (د: اكرم ضياء العمري )",
+    image: coverSiraAkram,
+    book_url: "/Books/السيرة_النبوية_الصحيحة.pdf",
   },
   {
-    title: "السيرة النبوية لابن هشام - الجزء الثاني",
-    image: cover,
-    book_url: "/Books/%D8%A7%D9%84%D8%B3%D9%8A%D8%B1%D8%A9%20%D8%A7%D9%84%D9%86%D8%A8%D9%88%D9%8A%D8%A9%20%D9%84%D8%A7%D8%A8%D9%86%20%D9%87%D8%B4%D8%A7%D9%85%20%D8%AC2%20pdf%20(arab-books.com).pdf",
+    title: "الشمائل المحمدية (د: اكرم ضياء العمري)",
+    image: coverShamailAkram,
+    book_url: "/Books/كتاب_الشمائل_المحمدية.pdf",
   },
   {
-    title: "السيرة النبوية لابن هشام - الجزء الثالث",
+    title: " السيرة النبوية لابن هشام ",
     image: cover,
-    book_url: "/Books/%D8%A7%D9%84%D8%B3%D9%8A%D8%B1%D8%A9%20%D8%A7%D9%84%D9%86%D8%A8%D9%88%D9%8A%D8%A9%20%D9%84%D8%A7%D8%A8%D9%86%20%D9%87%D8%B4%D8%A7%D9%85%20%D8%AC3%20pdf%20(arab-books.com).pdf",
+    book_url: "/Books/alsyra_alnubawia.pdf",
   },
   {
-    title: "كتاب الحوار في السيرة النبوية",
+    title: "السيرة النبوية لابن كثير - الجزء الثالث",
     image: cover2,
-    book_url: "/Books/%D9%83%D8%AA%D8%A7%D8%A8%20%D8%A7%D9%84%D8%AD%D9%88%D8%A7%D8%B1%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%B3%D9%8A%D8%B1%D8%A9%20%D8%A7%D9%84%D9%86%D8%A8%D9%88%D9%8A%D8%A9%20PDF%20(arab-books.com).pdf",
+    book_url: "/Books/Noor-Book.com  السيرة النبوية لابن كثير 3 .pdf",
   },
   {
-    title: "أربعة أجزاء في السيرة",
-    image: cover,
-    book_url: "/Books/04_94566-4part.pdf",
+    title: "السيرة النبوية لابن كثير - الجزء الرابع",
+    image: cover2,
+    book_url: "/Books/ابن كثير جزء4.pdf",
   },
+
 ];
 //========= to fetch the data from the API ================
 export async function GET() {

@@ -23,7 +23,7 @@ export default function Sidebar() {
   const router = useRouter();
   const pathname = usePathname();
   const [userName, setUserName] = useState("Rony Mostafa");
-  const [avatar, setAvatar] = useState("/default-avatar.png");
+  const [avatar, setAvatar] = useState<string | null>(null);
   const { setLoading } = useLoading();
 
   useEffect(() => {
@@ -37,7 +37,7 @@ export default function Sidebar() {
       if (stored) {
         const parsed = JSON.parse(stored);
         if (parsed?.name) setUserName(parsed.name);
-        if (parsed?.avatar) setAvatar(parsed.avatar);
+        if (parsed?.avatar) setAvatar(parsed.avatar); // هنا بس نستخدم avatar
       }
     } catch {
       // ignore parse errors
@@ -63,7 +63,7 @@ export default function Sidebar() {
           <div className="flex items-center gap-3 mb-8">
             <div className="relative">
               <img
-                src={avatar}
+                src={avatar || "/default-avatar.png"}
                 alt="User Avatar"
                 className="w-10 h-10 rounded-full border border-emerald-400 object-cover shadow-md"
               />
@@ -158,7 +158,7 @@ export default function Sidebar() {
         <div className="flex items-center justify-between bg-black/80 backdrop-blur px-4 py-3 border-b border-emerald-600/50">
           <div className="flex items-center gap-3">
             <img
-              src={avatar}
+              src={avatar || "/default-avatar.png" }
               alt="User Avatar"
               className="w-10 h-10 rounded-full border border-emerald-400 object-cover shadow-md"
             />
