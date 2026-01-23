@@ -63,7 +63,7 @@ export default function Sidebar() {
           <div className="flex items-center gap-3 mb-8">
             <div className="relative">
               <img
-                src={avatar || "/default-avatar.png"}
+                src={avatar || "/default-avatar.svg"}
                 alt="User Avatar"
                 className="w-10 h-10 rounded-full border border-emerald-400 object-cover shadow-md"
               />
@@ -158,7 +158,7 @@ export default function Sidebar() {
         <div className="flex items-center justify-between bg-black/80 backdrop-blur px-4 py-3 border-b border-emerald-600/50">
           <div className="flex items-center gap-3">
             <img
-              src={avatar || "/default-avatar.png" }
+              src={avatar || "/default-avatar.svg" }
               alt="User Avatar"
               className="w-10 h-10 rounded-full border border-emerald-400 object-cover shadow-md"
             />

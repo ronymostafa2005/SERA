@@ -37,6 +37,11 @@ const books: Book[] = [
     image: cover2,
     book_url: "/Books/ابن كثير جزء4.pdf",
   },
+  {
+    title: "الرحيق المختوم",
+    image: cover,
+    book_url: "/Books/Khizanat-lkotob.com  كتاب لرحيق  المختوم pdf.pdf",
+  },
 
 ];
 //========= to fetch the data from the API ================
