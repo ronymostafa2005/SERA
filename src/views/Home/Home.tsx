@@ -164,6 +164,7 @@ export default function Home() {
     <>
       <Sidebar />
       <div className={`p-6 min-h-screen transition-all duration-500 ${isOpen ? "md:ml-64 ml-0" : "ml-0"} pt-20 md:pt-6`}>
+      <div className="max-w-7xl mx-auto space-y-12">
       <div className="relative mb-12 text-center">
         <div className="absolute inset-0 -z-10">
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse"></div>
@@ -251,7 +252,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between mb-4">
         <h2 className="text-3xl font-bold text-emerald-400 drop-shadow-[0_0_20px_rgba(16,185,129,0.9)]">روابط المنصة</h2>
         <button
           onClick={refreshSections}
@@ -307,7 +308,7 @@ export default function Home() {
       </div>
 
       <div className="mt-14">
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between mb-6">
           <div>
             <h3 className="text-3xl font-bold text-emerald-400 drop-shadow-[0_0_20px_rgba(16,185,129,0.9)]">
             لمحة عن المنصة
@@ -417,7 +418,7 @@ export default function Home() {
       </div>
 
       <div className="mt-16 relative">
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between mb-6">
           <div>
             <h3 className="text-3xl font-bold text-emerald-400 drop-shadow-[0_0_20px_rgba(16,185,129,0.9)]">
               استعن بالله 
@@ -469,6 +470,7 @@ export default function Home() {
         </div>
       </div>
 
+      </div>
       </div>
     </>
   );
