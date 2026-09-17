@@ -136,18 +136,9 @@ export default function Home() {
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-white to-emerald-400 mb-2">
               منصة الإسلام الشاملة
             </h1>
-            <p className="text-sm md:text-base text-slate-400 max-w-xl mx-auto mb-4">
+            <p className="text-sm md:text-base text-slate-400 max-w-xl mx-auto">
               استكشف مكتبة غنية من المحتوى الإسلامي الموثوق — قرآن، أحاديث، محاضرات، وكتب.
             </p>
-
-            <div className="inline-flex flex-wrap items-center justify-center gap-5 md:gap-8 bg-white/[0.03] border border-white/8 rounded-2xl px-6 py-3 backdrop-blur-sm">
-              {[{ num: "٨", label: "أقسام رئيسية" }, { num: "+١٠٠", label: "كتاب ومقال" }, { num: "٢٤/٧", label: "وصول مجاني" }, { num: "AI", label: "تحقق ذكي" }].map((s) => (
-                <div key={s.label} className="flex flex-col items-center gap-0.5">
-                  <span className="text-lg md:text-xl font-extrabold text-emerald-400">{s.num}</span>
-                  <span className="text-[11px] text-slate-400">{s.label}</span>
-                </div>
-              ))}
-            </div>
           </section>
 
           {/* NAVIGATION CARDS */}
