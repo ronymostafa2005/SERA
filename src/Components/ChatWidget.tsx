@@ -133,11 +133,10 @@ export default function ChatWidget() {
               {history.map((item) => (
                 <div
                   key={item.id}
-                  className={`max-w-[90%] rounded-2xl px-4 py-3 text-sm leading-relaxed shadow ${
-                    item.role === "user"
+                  className={`max-w-[90%] rounded-2xl px-4 py-3 text-sm leading-relaxed shadow ${item.role === "user"
                       ? "ml-auto bg-emerald-500/20 border border-emerald-400/30 text-emerald-50"
                       : "bg-white/5 border border-white/10 text-slate-100"
-                  }`}
+                    }`}
                 >
                   <div className="text-[11px] uppercase tracking-wide opacity-70 mb-1">
                     {item.role === "user" ? "مستخدم" : "المساعد"}
@@ -185,7 +184,7 @@ export default function ChatWidget() {
                 </button>
               </div>
               <div className="text-[12px] text-slate-300/80 text-center">
-                الردود مصدرها الدرر السنية + صياغة ChatGPT
+                الردود مصدرها الدرر السنية
               </div>
             </div>
           </div>

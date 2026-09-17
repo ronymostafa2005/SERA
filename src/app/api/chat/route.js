@@ -1,5 +1,6 @@
 
 import { NextResponse } from "next/server";
+// landing update
 
 // System prompt لخبير الأحاديث النبوية
 const HADITH_EXPERT_PROMPT = `أنت عالم متخصص في علوم الحديث النبوي الشريف، خبير في:
@@ -38,7 +39,7 @@ export async function POST(req) {
 
     // نرسل الحديث مباشرة لـ Gemini مع system instruction
     const geminiRes = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
       {
         method: "POST",
         headers: {
